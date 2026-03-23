@@ -5,62 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Justin Rodriguez | Aerospace Systems</title>
     <style>
-        :root { --primary: #0071e3; --text: #1d1d1f; --bg: #fbfbfd; --card: #ffffff; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "Helvetica Neue", sans-serif; margin: 0; background: var(--bg); color: var(--text); scroll-behavior: smooth; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 10%; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid #d2d2d7; position: fixed; width: 80%; top: 0; z-index: 1000; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; }
-        main { max-width: 1000px; margin: 7rem auto; padding: 0 2rem; }
-        .hero { display: flex; gap: 2rem; margin-bottom: 4rem; }
-        .card { background: var(--card); border-radius: 18px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); padding: 2.5rem; border: 1px solid #f2f2f2; }
-        .hero-bio { flex: 2; }
-        .hero-img { flex: 1; overflow: hidden; padding: 0; display: flex; align-items: center; justify-content: center; }
-        .hero-img img { width: 100%; height: 100%; object-fit: cover; }
-        h1 { font-size: 3rem; margin: 0; letter-spacing: -0.03em; }
-        .subtitle { font-size: 1.4rem; color: var(--primary); font-weight: 600; margin: 0.5rem 0 1.5rem 0; }
+        :root { --primary: #0071e3; --text: #1d1d1f; --bg: #fbfbfd; --card: #ffffff; --border: #d2d2d7; }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.5; }
         
-        /* Project Horizontal Cards */
-        .project-card { display: flex; margin-bottom: 2rem; overflow: hidden; padding: 0; }
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 10%; background: rgba(255,255,255,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; margin: 0; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-size: 0.9rem; font-weight: 500; }
+        .resume-btn { background: var(--primary); color: white !important; padding: 8px 18px; border-radius: 20px; font-weight: 600 !important; transition: opacity 0.2s; }
+
+        /* Hero (Home/About Merged) */
+        main { max-width: 1000px; margin: 7rem auto; padding: 0 2rem; }
+        .hero { display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 4rem; }
+        .card { background: var(--card); border-radius: 18px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); padding: 2.5rem; border: 1px solid #f2f2f2; }
+        .hero-bio { flex: 1.8; }
+        .hero-img { flex: 1; overflow: hidden; padding: 0; border-radius: 18px; height: 320px; }
+        .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        h1 { font-size: 3.2rem; margin: 0; letter-spacing: -0.03em; }
+        .subtitle { font-size: 1.4rem; color: var(--primary); font-weight: 600; margin: 0.5rem 0 1.5rem 0; }
+        p { color: #424245; font-size: 1.05rem; }
+
+        /* Project Section */
+        .project-card { display: flex; padding: 0; overflow: hidden; margin-bottom: 2rem; transition: transform 0.3s; }
+        .project-card:hover { transform: translateY(-5px); }
         .p-img { flex: 1; background: #f2f2f2; min-height: 250px; }
         .p-img img { width: 100%; height: 100%; object-fit: cover; }
-        .p-content { flex: 1.5; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
-        .p-tag { font-size: 0.7rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; }
-        .p-title { font-size: 1.6rem; margin: 0 0 1rem 0; letter-spacing: -0.01em; }
-        .p-btn { align-self: flex-start; padding: 8px 20px; background: #e8f0fe; color: var(--primary); text-decoration: none; border-radius: 20px; font-weight: 600; font-size: 0.85rem; }
-        
-        @media (max-width: 768px) { .hero, .project-card { flex-direction: column; } nav { width: 100%; padding: 1rem 5%; } }
+        .p-content { flex: 1.4; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
+        .p-tag { font-size: 0.75rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem; }
+        .full-name { font-size: 0.9rem; color: #86868b; font-weight: 500; margin-bottom: 1rem; }
+        .view-btn { align-self: flex-start; padding: 10px 22px; background: #0071e3; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; font-size: 0.9rem; margin-top: 1rem; }
+
+        @media (max-width: 768px) { .hero, .project-card { flex-direction: column; } nav { padding: 1rem 5%; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
+
     <nav>
-        <div style="font-weight:700">JR</div>
+        <div style="font-weight:700; font-size:1.2rem">JR</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="https://www.linkedin.com/in/justin-j-rodriguez" target="_blank">LinkedIn</a></li>
+            <li><a href="resume.pdf" target="_blank" class="resume-btn">Resume</a></li>
         </ul>
     </nav>
-    <main id="home">
-        <section class="hero">
+
+    <main>
+        <section id="home" class="hero">
             <div class="card hero-bio">
                 <h1>Justin Rodriguez</h1>
                 <div class="subtitle">M.S. Aerospace Engineering</div>
-                <p style="color:#6e6e73">Specializing in Space Systems Design and GNC at the University of Central Florida. I focus on bridging complex theoretical models with functional hardware implementations.</p>
+                <p>Specializing in Space Systems Design at UCF. I am an engineer driven by first principles, currently working as a Graduate Grader for Aerospace Experiments. My expertise lies in high-fidelity thermal analysis, GNC systems, and structural FEA.</p>
+                <p>I focus on solving high-consequence challenges in orbital logistics and cryogenic fluid management through functional numerical modeling.</p>
             </div>
-            <div class="card hero-img"><img src="profile.jpg"></div>
+            <div class="card hero-img"><img src="profile.jpg" alt="Justin Rodriguez"></div>
         </section>
 
-        <h2 id="projects" style="margin-bottom:2rem; font-size:2rem">Featured Projects</h2>
-        
-        <div class="card project-card">
-            <div class="p-img"><img src="thermal-thumb.jpg"></div>
-            <div class="p-content">
-                <div class="p-tag">Thermodynamics & Control</div>
-                <h3 class="p-title">Active Thermal Control Loop</h3>
-                <p style="color:#6e6e73; font-size:0.95rem">Satellite thermal regulation simulation utilizing a lumped-parameter model and PID control logic.</p>
-                <a href="thermal-loop.html" class="p-btn">View More →</a>
+        <section id="projects">
+            <h2 style="font-size: 2.2rem; margin-bottom: 2rem;">Featured Projects</h2>
+            
+            <div class="card project-card">
+                <div class="p-img"><img src="goldilox-thumb.jpg" alt="GOLDILOX Project"></div>
+                <div class="p-content">
+                    <div class="p-tag">Cryogenics | Orbital Mechanics | Python</div>
+                    <h3 style="font-size: 1.8rem; margin: 0;">Project GOLDILOX</h3>
+                    <div class="full-name">Global Orbit Liquid Distribution & In-situ LOX Exchange</div>
+                    <p>Numerical model for Starship in-orbit LOX refueling, analyzing cryogenic boil-off against insulation performance and microgravity fuel settlement requirements.</p>
+                    
+                    <a href="https://your-goldilox-app.streamlit.app" target="_blank" class="view-btn">Launch Simulation →</a>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
+
 </body>
 </html>
